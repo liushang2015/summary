@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * HashMap内存泄漏问题
  * -Xmx3M -Xms3M
- * 重写equals的对象每个值比较
+ * 重写equals的对象每个值比较，解决内存泄漏问题
  */
 public class JavaHeapSpaceHashMapMemoryLeak {
     public static void main(String[] args) {
