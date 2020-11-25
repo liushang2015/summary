@@ -25,6 +25,11 @@
             <artifactId>spring-core</artifactId>
             <version>5.2.5.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.0-jre</version>
+        </dependency>
     </dependencies>
 
 
