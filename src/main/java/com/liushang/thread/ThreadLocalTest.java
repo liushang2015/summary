@@ -22,14 +22,14 @@ public class ThreadLocalTest {
     private static ThreadLocal<DateFormat> sdf2 = ThreadLocal.withInitial(()->new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
     public static void main(String[] args) {
         ThreadFactory threadFactory = new ThreadFactoryBuilder().setNameFormat("thread-%d").build();
-        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(20,20,0L, TimeUnit.MICROSECONDS,new LinkedBlockingDeque<Runnable>(1024),threadFactory);
+        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(1,10,0L, TimeUnit.MICROSECONDS,new LinkedBlockingDeque<Runnable>(10),threadFactory);
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 15; i++) {
             threadPoolExecutor.execute(()->
                     {
                         try {
 //                            System.out.println(sdf.parse("2020-11-25 09:49:00"));
-                            System.out.println(sdf2.get().parse("2020-11-25 09:49:00"));
+                            System.out.println(Thread.currentThread().getId()+":"+sdf2.get().parse("2020-11-25 09:49:00"));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
